@@ -42,7 +42,10 @@ if (mongoCFUri) {
 
 console.log("Using Mongo URI " + mongoUri);
 
-mongoose.connect(mongoUri);
+try {
+  mongoose.connect(mongoUri);
+} catch (e) {
+}
 
 User = mongoose.model('User');
 User.find({ username: 'admin' }).exec(function (err, users) {

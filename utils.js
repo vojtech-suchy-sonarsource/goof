@@ -9,6 +9,7 @@ module.exports = {
     var src     = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var src_len = src.length;
     var i       = len;
+    var unusedVar = 'debug';
 
     for( ; i-- ; ){
       str += src.charAt( this.ran_no( 0, src_len - 1 ));

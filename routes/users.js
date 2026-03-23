@@ -19,9 +19,19 @@ router.get('/', async (req, res, next) => {
   console.log('The Object.where property is set to: ', {}.where)
   console.log(results)
 
+  if (results.length == 0) {
+    console.log('No users found');
+  }
+
   return res.json(results)
 
 })
+
+// router.delete('/:id', async (req, res) => {
+//   const id = req.params.id;
+//   await repo.delete(id);
+//   return res.sendStatus(200);
+// });
 
 router.post('/', async (req, res, next) => {
   try {
