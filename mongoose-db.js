@@ -45,6 +45,7 @@ console.log("Using Mongo URI " + mongoUri);
 try {
   mongoose.connect(mongoUri);
 } catch (e) {
+  console.log(`Exception while connecting to Mongo: ${e}`);
 }
 
 User = mongoose.model('User');
