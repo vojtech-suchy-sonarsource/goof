@@ -281,7 +281,7 @@ exports.chat = {
   delete(req, res) {
     const user = findUser(req.body.auth || {});
 
-    if (!user || !user.canDelete) {
+    if (!user?.canDelete) {
       res.status(403).send({ ok: false, error: 'Access denied' });
       return;
     }
