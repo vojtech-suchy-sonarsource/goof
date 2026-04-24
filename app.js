@@ -6,10 +6,10 @@
 require('./mongoose-db');
 require('./typeorm-db')
 
-var st = require('st');
-var crypto = require('crypto');
+const st = require('st');
+const crypto = require('node:crypto');
 var express = require('express');
-var http = require('http');
+const http = require('node:http');
 var path = require('path');
 var ejsEngine = require('ejs-locals');
 var cookieParser = require('cookie-parser');
