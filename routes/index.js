@@ -6,14 +6,14 @@ var User = mongoose.model('User');
 var hms = require('humanize-ms');
 var ms = require('ms');
 var streamBuffers = require('stream-buffers');
-var readline = require('readline');
+var readline = require('node:readline');
 var moment = require('moment');
-var exec = require('child_process').exec;
+var exec = require('node:child_process').exec;
 
 // zip-slip
 var fileType = require('file-type');
 var AdmZip = require('adm-zip');
-var fs = require('fs');
+var fs = require('node:fs');
 
 // prototype-pollution
 var _ = require('lodash');
@@ -67,7 +67,7 @@ function parse(todo) {
 
     // remove it
     t = t.slice(0, reminder);
-    if (typeof period != 'undefined') {
+    if (period !== undefined) {
       t += ' [' + ms(period) + ']';
     }
   }
@@ -121,6 +121,7 @@ exports.destroy = function (req, res, next) {
         res.redirect('/');
       });
     } catch (e) {
+      console.log(e);
     }
   });
 };
