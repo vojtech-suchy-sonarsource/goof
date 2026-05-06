@@ -10,7 +10,7 @@ module.exports = {
     var src_len = src.length;
     var i       = len;
 
-    for( ; i-- ; ){
+    while( i-- ){
       str += src.charAt( this.ran_no( 0, src_len - 1 ));
     }
 
