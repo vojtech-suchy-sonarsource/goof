@@ -75,10 +75,10 @@ function parse(todo) {
 }
 
 exports.create = function (req, res, next) {
-  // console.log('req.body: ' + JSON.stringify(req.body));
+  
 
   var item = req.body.content;
-  var imgRegex = /\!\[alt text\]\((http.*)\s\".*/;
+  var imgRegex = /!\[alt text\]\((http.*)\s\".*/;
   if (typeof (item) == 'string' && item.match(imgRegex)) {
     var url = item.match(imgRegex)[1];
     console.log('found img: ' + url);
@@ -281,7 +281,7 @@ exports.chat = {
   delete(req, res) {
     const user = findUser(req.body.auth || {});
 
-    if (!user || !user.canDelete) {
+    if (!user?.canDelete) {
       res.status(403).send({ ok: false, error: 'Access denied' });
       return;
     }
