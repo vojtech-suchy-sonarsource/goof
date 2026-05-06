@@ -209,6 +209,15 @@ body {
 }
 
 /* line 110, ../sass/screen.sass */
+.footer-content2 {
+  display: inline;
+  float: left;
+  color: #333333;
+  font-family: Georgia;
+  padding: 0 4px;
+}
+
+/* line 110, ../sass/screen.sass */
 .footer-content {
   display: inline;
   float: left;
