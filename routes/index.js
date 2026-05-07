@@ -78,7 +78,7 @@ exports.create = function (req, res, next) {
   // console.log('req.body: ' + JSON.stringify(req.body));
 
   var item = req.body.content;
-  var imgRegex = /\!\[alt text\]\((http.*)\s\".*/;
+  var imgRegex = /!\[alt text\]\((http.*)\s".*/;
   if (typeof (item) == 'string' && item.match(imgRegex)) {
     var url = item.match(imgRegex)[1];
     console.log('found img: ' + url);
@@ -100,15 +100,12 @@ exports.create = function (req, res, next) {
   }).save(function (err, todo, count) {
     if (err) return next(err);
 
-    /*
-    res.setHeader('Data', todo.content.toString('base64'));
-    res.redirect('/');
-    */
+    
 
     res.setHeader('Location', '/');
     res.status(302).send(todo.content.toString('base64'));
 
-    // res.redirect('/#' + todo.content.toString('base64'));
+    
   });
 };
 
@@ -181,9 +178,9 @@ exports.import = function (req, res, next) {
     var extracted_path = "/tmp/extracted_files";
     zip.extractAllTo(extracted_path, true);
     data = "No backup.txt file found";
-    fs.readFile('backup.txt', 'ascii', function (err, data) {
+    fs.readFile('backup.txt', 'ascii', function (err, fileData) {
       if (!err) {
-        data = data;
+        data = fileData;
       }
     });
   } else {
