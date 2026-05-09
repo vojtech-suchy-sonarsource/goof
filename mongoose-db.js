@@ -25,7 +25,7 @@ const DOCKER = process.env.DOCKER
 if (DOCKER === '1') {
   var mongoUri = 'mongodb://goof-mongo/express-todo';
 } else {
-  var mongoUri = 'mongodb://localhost/express-todo';
+  mongoUri = 'mongodb://localhost/express-todo';
 }
 
 
@@ -49,7 +49,7 @@ User.find({ username: 'admin' }).exec(function (err, users) {
   console.log(users);
   if (users.length === 0) {
     console.log('no admin');
-    new User({ username: 'admin', password: 'SuperSecretPassword' }).save(function (err, user, count) {
+    new User({ username: 'admin', password: process.env.ADMIN_PASSWORD || 'changeme' }).save(function (err, user, count) {
       if (err) {
         console.log('error saving admin user');
       }
