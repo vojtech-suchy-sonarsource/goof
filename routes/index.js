@@ -1,4 +1,4 @@
-var utils = require('../utils');
+const utils = require('../utils');
 var mongoose = require('mongoose');
 var Todo = mongoose.model('Todo');
 var User = mongoose.model('User');
@@ -192,9 +192,9 @@ exports.import = function (req, res, next) {
   var lines = data.split('\n');
   lines.forEach(function (line) {
     var parts = line.split(',');
-    var what = parts[0];
+    const what = parts[0];
     console.log('importing ' + what);
-    var when = parts[1];
+    const when = parts[1];
     var locale = parts[2];
     var format = parts[3];
     var item = what;
