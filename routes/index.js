@@ -77,7 +77,7 @@ function parse(todo) {
 exports.create = function (req, res, next) {
   // console.log('req.body: ' + JSON.stringify(req.body));
 
-  var item = req.body.content;
+  let item = req.body.content;
   var imgRegex = /\!\[alt text\]\((http.*)\s\".*/;
   if (typeof (item) == 'string' && item.match(imgRegex)) {
     var url = item.match(imgRegex)[1];
@@ -195,14 +195,14 @@ exports.import = function (req, res, next) {
     var what = parts[0];
     console.log('importing ' + what);
     var when = parts[1];
-    var locale = parts[2];
-    var format = parts[3];
-    var item = what;
+    const locale = parts[2];
+    const format = parts[3];
+    let item = what;
     if (!isBlank(what)) {
       if (!isBlank(when) && !isBlank(locale) && !isBlank(format)) {
         console.log('setting locale ' + parts[1]);
         moment.locale(locale);
-        var d = moment(when);
+        const d = moment(when);
         console.log('formatting ' + d);
         item += ' [' + d.format(format) + ']';
       }
