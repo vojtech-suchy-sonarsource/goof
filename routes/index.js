@@ -1,7 +1,7 @@
 var utils = require('../utils');
-var mongoose = require('mongoose');
-var Todo = mongoose.model('Todo');
-var User = mongoose.model('User');
+const mongoose = require('mongoose');
+const Todo = mongoose.model('Todo');
+const User = mongoose.model('User');
 // TODO:
 var hms = require('humanize-ms');
 var ms = require('ms');
@@ -78,9 +78,9 @@ exports.create = function (req, res, next) {
   // console.log('req.body: ' + JSON.stringify(req.body));
 
   var item = req.body.content;
-  var imgRegex = /\!\[alt text\]\((http.*)\s\".*/;
+  const imgRegex = /\!\[alt text\]\((http.*)\s\".*/;
   if (typeof (item) == 'string' && item.match(imgRegex)) {
-    var url = item.match(imgRegex)[1];
+    const url = item.match(imgRegex)[1];
     console.log('found img: ' + url);
 
     exec('identify ' + url, function (err, stdout, stderr) {
