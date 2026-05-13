@@ -3,11 +3,11 @@ var mongoose = require('mongoose');
 var Todo = mongoose.model('Todo');
 var User = mongoose.model('User');
 // TODO:
-var hms = require('humanize-ms');
-var ms = require('ms');
-var streamBuffers = require('stream-buffers');
-var readline = require('readline');
-var moment = require('moment');
+const hms = require('humanize-ms');
+const ms = require('ms');
+const streamBuffers = require('stream-buffers');
+const readline = require('readline');
+const moment = require('moment');
 var exec = require('child_process').exec;
 
 // zip-slip
