@@ -8,10 +8,10 @@ var ms = require('ms');
 var streamBuffers = require('stream-buffers');
 var readline = require('readline');
 var moment = require('moment');
-var exec = require('child_process').exec;
+const exec = require('child_process').exec;
 
 // zip-slip
-var fileType = require('file-type');
+const fileType = require('file-type');
 var AdmZip = require('adm-zip');
 var fs = require('fs');
 
@@ -169,9 +169,9 @@ exports.import = function (req, res, next) {
     return;
   }
 
-  var importFile = req.files.importFile;
-  var data;
-  var importedFileType = fileType(importFile.data);
+  const importFile = req.files.importFile;
+  let data;
+  let importedFileType = fileType(importFile.data);
   var zipFileExt = { ext: "zip", mime: "application/zip" };
   if (importedFileType === null) {
     importedFileType = { ext: "txt", mime: "text/plain" };
