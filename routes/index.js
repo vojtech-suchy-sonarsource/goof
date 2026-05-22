@@ -8,7 +8,7 @@ var ms = require('ms');
 var streamBuffers = require('stream-buffers');
 var readline = require('readline');
 var moment = require('moment');
-const exec = require('child_process').exec;
+var exec = require('child_process').exec;
 
 // zip-slip
 const fileType = require('file-type');
