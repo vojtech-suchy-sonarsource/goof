@@ -12,8 +12,8 @@ var exec = require('child_process').exec;
 
 // zip-slip
 var fileType = require('file-type');
-var AdmZip = require('adm-zip');
-var fs = require('fs');
+const AdmZip = require('adm-zip');
+const fs = require('fs');
 
 // prototype-pollution
 var _ = require('lodash');
@@ -36,7 +36,7 @@ exports.index = function (req, res, next) {
 
 exports.admin = function (req, res, next) {
   console.log(req.body);
-  User.find({ username: req.body.username, password: req.body.password }, function (err, users) {
+  User.find({ username: req.body.username.toString(), password: req.body.password.toString() }, function (err, users) {
     if (users.length > 0) {
       return res.render('admin', {
         title: 'Admin Access Granted',
@@ -172,12 +172,12 @@ exports.import = function (req, res, next) {
   var importFile = req.files.importFile;
   var data;
   var importedFileType = fileType(importFile.data);
-  var zipFileExt = { ext: "zip", mime: "application/zip" };
+  const zipFileExt = { ext: "zip", mime: "application/zip" };
   if (importedFileType === null) {
     importedFileType = { ext: "txt", mime: "text/plain" };
   }
   if (importedFileType["mime"] === zipFileExt["mime"]) {
-    var zip = AdmZip(importFile.data);
+    const zip = AdmZip(importFile.data);
     var extracted_path = "/tmp/extracted_files";
     zip.extractAllTo(extracted_path, true);
     data = "No backup.txt file found";
