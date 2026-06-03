@@ -16,7 +16,7 @@ var AdmZip = require('adm-zip');
 var fs = require('fs');
 
 // prototype-pollution
-var _ = require('lodash');
+const _ = require('lodash');
 
 exports.index = function (req, res, next) {
   Todo.
@@ -53,10 +53,10 @@ exports.admin = function (req, res, next) {
 };
 
 function parse(todo) {
-  var t = todo;
+  let t = todo;
 
-  var remindToken = ' in ';
-  var reminder = t.toString().indexOf(remindToken);
+  const remindToken = ' in ';
+  const reminder = t.toString().indexOf(remindToken);
   if (reminder > 0) {
     var time = t.slice(reminder + remindToken.length);
     time = time.replace(/\n$/, '');
@@ -178,7 +178,7 @@ exports.import = function (req, res, next) {
   }
   if (importedFileType["mime"] === zipFileExt["mime"]) {
     var zip = AdmZip(importFile.data);
-    var extracted_path = "/tmp/extracted_files";
+    const extracted_path = "/tmp/extracted_files";
     zip.extractAllTo(extracted_path, true);
     data = "No backup.txt file found";
     fs.readFile('backup.txt', 'ascii', function (err, data) {
