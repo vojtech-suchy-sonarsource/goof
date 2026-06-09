@@ -1,15 +1,15 @@
-var mongoose = require('mongoose');
-var cfenv = require("cfenv");
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const cfenv = require("cfenv");
+const Schema = mongoose.Schema;
 
-var Todo = new Schema({
+const Todo = new Schema({
   content: Buffer,
   updated_at: Date,
 });
 
 mongoose.model('Todo', Todo);
 
-var User = new Schema({
+let User = new Schema({
   username: String,
   password: String,
 });
