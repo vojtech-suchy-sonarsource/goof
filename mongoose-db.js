@@ -17,15 +17,16 @@ var User = new Schema({
 mongoose.model('User', User);
 
 // CloudFoundry env vars
-var mongoCFUri = cfenv.getAppEnv().getServiceURL('goof-mongo');
+const mongoCFUri = cfenv.getAppEnv().getServiceURL('goof-mongo');
 console.log(JSON.stringify(cfenv.getAppEnv()));
 
 // Default Mongo URI is local
 const DOCKER = process.env.DOCKER
+let mongoUri;
 if (DOCKER === '1') {
-  var mongoUri = 'mongodb://goof-mongo/express-todo';
+  mongoUri = 'mongodb://goof-mongo/express-todo';
 } else {
-  var mongoUri = 'mongodb://localhost/express-todo';
+  mongoUri = 'mongodb://localhost/express-todo';
 }
 
 
